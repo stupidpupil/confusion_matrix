@@ -59,15 +59,17 @@
       </tr>
 
       <tr>
-        <th>Sensitivity</td>
+        <th><span class="sensitivity">Sensitivity</span></td>
         <td><span class="tp">{tp}</span> / <span class="p">{p | watch tp fn}</span> = </td>
         <td><span class="sensitivity"> {sensitivity | watch tp tn | percent} </span></td>
+        <td class='synonyms'>True positive rate, recall, hit rate, statistical power</td> 
       </tr>
 
       <tr>
-        <th>Specificity</td>
+        <th><span class="specificity">Specificity</span></td>
         <td><span class="tn">{tn}</span> / <span class="n">{n | watch tn fp}</span> = </td>
         <td><span class="specificity">{specificity | watch tn fp | percent}</span></td>
+        <td class='synonyms'>True negative rate, selectivity</td> 
       </tr>
 
       <tr>
@@ -85,16 +87,20 @@
 
         </td>
         <td>{informedness | watch tn fp tp fn | percent}</td>
+        <td class='synonyms'>Youden's J</td> 
+
       </tr>
 
       <tr>
-        <th>Positive Predictive Value</td>
+        <th>Positive predictive value</td>
         <td><span class="tp">{tp}</span> / <span class="predp">{predp | watch tp fp}</span> = </td>
         <td>{positive_predictive_value | watch tp fp | percent}</td>
+        <td class='synonyms'>Precision</td> 
+
       </tr>
 
       <tr>
-        <th>Negative Predictive Value</td>
+        <th>Negative predictive value</td>
         <td><span class="tn">{tn}</span> / <span class="predn">{predn | watch tn fn}</span> = </td>
         <td>{negative_predictive_value | watch tn fn | percent}</td>
       </tr>
@@ -103,12 +109,14 @@
         <th>False alarm rate</td>
         <td><span class="fp">{fp}</span> / <span class="n">{n | watch tn fp}</span> = </td>
         <td>{false_positive_rate | watch tn fp | percent}</td>
+        <td class='synonyms'>False positive rate, fall-out</td> 
       </tr>
 
       <tr>
         <th>Miss rate</td>
         <td><span class="fn">{fn}</span> / <span class="p">{p | watch tp fn}</span> = </td>
         <td>{false_negative_rate | watch tp fn | percent}</td>
+        <td class='synonyms'>False negative rate</td> 
       </tr>
 
 

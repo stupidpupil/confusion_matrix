@@ -43,6 +43,11 @@ html{
 	text-align: center;
 }
 
+#statistics .synonyms{
+	text-align: left;
+	color: #555555;
+}
+
 /* Actual Positives */
 .tp, .tp input,
 .fn, .fn input,
@@ -62,7 +67,7 @@ html{
 
 .p, .n{
 	font-weight: bold;
-	background-color: #dddddd;
+	background-color: #ececec;
 }
 
 /* Pred Positives */
@@ -79,7 +84,7 @@ html{
 .fn, .fn input,
 .predn
 {
-	background-color: #d8daeb;
+	background-color: #d8daed;
 }
 
 
