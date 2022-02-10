@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang=en>
+  <head>
+    <script src="/tinybind.js"></script>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" 
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" 
+      crossorigin="anonymous"></script>
+
+    <script src="/main.js"></script>
+    <link rel="stylesheet" href="/main.css" />
+
+  </head>
+  <body id="body">
+
+    <table id="table_confusion_matrix">
+
+      <tr>
+        <td colspan="2" />
+        <th scope="col" colspan="2">Predicted Condition</th></tr>
+      
+      <tr>
+        <td colspan="1" />
+        <td>{total | watch tp tn fp fn}</td>
+        <th class="predp" scope="col">Positive</th>
+        <th class="predn" scope="col">Negative</th>
+      </tr>
+      
+      <tr>
+        <th rowspan="2" scope="row" class='actual_condition_header'>Actual Condition</th>
+        <th class="p" scope="row">Positive</th>
+        <td class="tp"><input type="number" name="tp" rv-value="tp"></td>
+        <td class="fn"><input type="number" name="fn" rv-value="fn"></td>
+        <td class="p">{p | watch tp fn}</td>
+      </tr>
+      
+      <tr>
+        <!-- th from above -->
+        <th class="n" scope="row">Negative</th>
+        <td class="fp"><input type="number" name="fp" rv-value="fp"></td>
+        <td class="tn"><input type="number" name="tn" rv-value="tn"></td>
+        <td class="n">{n | watch fp tn}</td>
+      </tr>
+
+      <tr>
+        <td colspan="2" />
+        <td class="predp">{predp | watch tp fp}</td>
+        <td class="predn">{predn | watch tn fn}</td>
+      </tr>
+
+    </table>
+
+    <table id="statistics">
+      <tr>
+        <th>Actual Prevalence</td>
+        <td><span class="p">{p | watch tp fn}</span> / (<span class="p">{p | watch tp fn}</span> + <span class="n">{n | watch fp tn}</span>) = </td>
+        <td>{prevalence | watch tp tn fp fn | percent}</td>
+      </tr>
+
+      <tr>
+        <th>Sensitivity</td>
+        <td><span class="tp">{tp}</span> / <span class="p">{p | watch tp fn}</span> = </td>
+        <td><span class="sensitivity"> {sensitivity | watch tp tn | percent} </span></td>
+      </tr>
+
+      <tr>
+        <th>Specificity</td>
+        <td><span class="tn">{tn}</span> / <span class="n">{n | watch tn fp}</span> = </td>
+        <td><span class="specificity">{specificity | watch tn fp | percent}</span></td>
+      </tr>
+
+      <tr>
+        <th>'Accuracy'</td>
+        <td>(<span class="tp">{tp}</span> + <span class="tn">{tn}</span>) / (<span class="p">{p | watch tp fn}</span> + <span class="n">{n | watch fp tn}</span>) = </td>
+        <td>{accuracy | watch tn fp tp fn | percent}</td>
+      </tr>
+
+      <tr>
+        <th>Informedness</td>
+        <td>
+          <span class="sensitivity"> {sensitivity | watch tp tn | percent} </span> +
+          <span class="specificity">{specificity | watch tn fp | percent}</span> -
+          100% =
+
+        </td>
+        <td>{informedness | watch tn fp tp fn | percent}</td>
+      </tr>
+
+      <tr>
+        <th>Positive Predictive Value</td>
+        <td><span class="tp">{tp}</span> / <span class="predp">{predp | watch tp fp}</span> = </td>
+        <td>{positive_predictive_value | watch tp fp | percent}</td>
+      </tr>
+
+      <tr>
+        <th>Negative Predictive Value</td>
+        <td><span class="tn">{tn}</span> / <span class="predn">{predn | watch tn fn}</span> = </td>
+        <td>{negative_predictive_value | watch tn fn | percent}</td>
+      </tr>
+
+      <tr>
+        <th>False alarm rate</td>
+        <td><span class="fp">{fp}</span> / <span class="n">{n | watch tn fp}</span> = </td>
+        <td>{false_positive_rate | watch tn fp | percent}</td>
+      </tr>
+
+      <tr>
+        <th>Miss rate</td>
+        <td><span class="fn">{fn}</span> / <span class="p">{p | watch tp fn}</span> = </td>
+        <td>{false_negative_rate | watch tp fn | percent}</td>
+      </tr>
+
+
+
+
+    </table>
+
+    
+  </body>
+</html>

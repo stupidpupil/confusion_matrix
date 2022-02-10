@@ -1,0 +1,99 @@
+html{
+	font-family: 'Segoe UI';
+}
+
+#table_confusion_matrix,
+#table_confusion_matrix input{
+	text-align: center;
+	font-size: 1em;
+}
+
+#table_confusion_matrix input{
+	height: 6em;
+	width:  6em;
+	border:  none;
+}
+
+#table_confusion_matrix td{
+	min-width: 2em;
+}
+
+.actual_condition_header{
+    transform-origin:50% 50%;
+    transform: rotate(-90deg);
+}
+
+
+#statistics{
+	margin-top: 3em;
+	margin-left: 3em;
+}
+
+#statistics th, #statistics td{
+	text-align: right;
+	padding: 0.5em 0.2em;
+	border-bottom: 1px solid #aaaaaa;
+}
+
+#statistics span{
+	padding: 0.1em 0.2em;
+	border-radius: 0.4em;
+	min-width: 1.2em;
+	display: inline-block;
+	text-align: center;
+}
+
+/* Actual Positives */
+.tp, .tp input,
+.fn, .fn input,
+.p
+{
+	color: #e66101;
+}
+
+
+/* Actual Negatives */
+.fp, .fp input,
+.tn, .tn input,
+.n
+{
+	color: #5e3c99;
+}
+
+.p, .n{
+	font-weight: bold;
+	background-color: #dddddd;
+}
+
+/* Pred Positives */
+.tp, .tp input,
+.fp, .fp input,
+.predp
+{
+	background-color: #fee0b6;
+}
+
+
+/* Pred Negatives */
+.tn, .tn input,
+.fn, .fn input,
+.predn
+{
+	background-color: #d8daeb;
+}
+
+
+.predp, .predn{
+	font-style: italic;
+}
+
+
+.sensitivity{
+	color: #e66101;
+	border: 1px solid #e66101;
+}
+
+.specificity{
+	color: #5e3c99;
+	border: 1px solid #5e3c99;
+}
