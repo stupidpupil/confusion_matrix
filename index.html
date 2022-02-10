@@ -62,7 +62,7 @@
       <tr>
         <th><span class="sensitivity">Sensitivity</span></td>
         <td><span class="tp">{tp}</span> / <span class="p">{p | watch tp fn}</span> = </td>
-        <td><span class="sensitivity"> {sensitivity | watch tp tn | percent} </span></td>
+        <td><span class="sensitivity"> {sensitivity | watch tp fn | percent} </span></td>
         <td class='synonyms'>True positive rate, recall, hit rate, statistical power</td> 
       </tr>
 
@@ -82,7 +82,7 @@
       <tr>
         <th>Informedness</td>
         <td>
-          <span class="sensitivity"> {sensitivity | watch tp tn | percent} </span> +
+          <span class="sensitivity"> {sensitivity | watch tp fn | percent} </span> +
           <span class="specificity">{specificity | watch tn fp | percent}</span> -
           100% =
 
