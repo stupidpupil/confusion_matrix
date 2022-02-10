@@ -31,16 +31,16 @@
       <tr>
         <th rowspan="2" scope="row" class='actual_condition_header'>Actual Condition</th>
         <th class="p" scope="row">Positive</th>
-        <td class="tp"><input type="number" name="tp" rv-value="tp"></td>
-        <td class="fn"><input type="number" name="fn" rv-value="fn"></td>
+        <td class="tp"><input type="number" name="tp" rv-value="tp" min="0"></td>
+        <td class="fn"><input type="number" name="fn" rv-value="fn" min="0"></td>
         <td class="p">{p | watch tp fn}</td>
       </tr>
       
       <tr>
         <!-- th from above -->
         <th class="n" scope="row">Negative</th>
-        <td class="fp"><input type="number" name="fp" rv-value="fp"></td>
-        <td class="tn"><input type="number" name="tn" rv-value="tn"></td>
+        <td class="fp"><input type="number" name="fp" rv-value="fp" min="0"></td>
+        <td class="tn"><input type="number" name="tn" rv-value="tn" min="0"></td>
         <td class="n">{n | watch fp tn}</td>
       </tr>
 
