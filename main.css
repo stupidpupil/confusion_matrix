@@ -117,6 +117,21 @@ html{
 	border: 1px solid #5e3c99;
 }
 
+.positive_predictive_value,
+.negative_predictive_value{
+	font-style: italic;
+}
+
+.positive_predictive_value{
+	background-color: #fee0b6;
+	border: 1px solid #e66101;
+}
+
+.negative_predictive_value{
+	background-color: #d8daed;
+	border: 1px solid #5e3c99;
+}
+
 /*
 
  Highlight

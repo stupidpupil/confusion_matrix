@@ -93,17 +93,17 @@
       </tr>
 
       <tr>
-        <th>Positive predictive value</td>
+        <th><span class="positive_predictive_value">Positive predictive value</span></td>
         <td><span class="tp">{tp}</span> / <span class="predp">{predp | watch tp fp}</span> = </td>
-        <td>{positive_predictive_value | watch tp fp | percent}</td>
+        <td><span class="positive_predictive_value">{positive_predictive_value | watch tp fp | percent}</span></td>
         <td class='synonyms'>Precision</td> 
 
       </tr>
 
       <tr>
-        <th>Negative predictive value</td>
+        <th><span class="negative_predictive_value">Negative predictive value</span></td>
         <td><span class="tn">{tn}</span> / <span class="predn">{predn | watch tn fn}</span> = </td>
-        <td>{negative_predictive_value | watch tn fn | percent}</td>
+        <td><span class="negative_predictive_value">{negative_predictive_value | watch tn fn | percent}</span></td>
       </tr>
 
       <tr>
@@ -128,12 +128,14 @@
         <th>False discovery rate</td>
         <td><span class="fp">{fp}</span> / <span class="predp">{predp | watch tp fp}</span> = </td>
         <td>{false_discovery_rate | watch tp fp | percent}</td>
+        <td class='synonyms'>100% - <span class="positive_predictive_value">{positive_predictive_value | watch tp fp | percent}</span></td>
       </tr>
 
       <tr>
         <th>False omission rate</td>
         <td><span class="fn">{fn}</span> / <span class="predn">{predn | watch fn tn}</span> = </td>
         <td>{false_omission_rate | watch fn tn | percent}</td>
+        <td class='synonyms'>100% - <span class="negative_predictive_value">{negative_predictive_value | watch tn fn | percent}</span></td>
       </tr>
 
 
