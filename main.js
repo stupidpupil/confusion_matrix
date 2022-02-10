@@ -37,7 +37,7 @@ $(function(){
 			negative_predictive_value: function(){return parseInt(this.tn, 10) / this.predn()},
 
 			false_positive_rate: function(){return parseInt(this.fp, 10)/this.n()},
-			false_negative_rate: function(){return parseInt(this.fn, 19)/this.p()},
+			false_negative_rate: function(){return parseInt(this.fn, 10)/this.p()},
 
 		})	
 
