@@ -3,6 +3,11 @@ html{
 }
 
 #table_confusion_matrix,
+#statistics{
+	float: left;
+}
+
+#table_confusion_matrix,
 #table_confusion_matrix input{
 	text-align: center;
 	font-size: 1em;
@@ -17,6 +22,8 @@ html{
 #table_confusion_matrix td{
 	min-width: 2em;
 }
+
+
 
 .actual_condition_header{
     transform-origin:50% 50%;
@@ -101,4 +108,44 @@ html{
 .specificity{
 	color: #5e3c99;
 	border: 1px solid #5e3c99;
+}
+
+/*
+
+ Highlight
+
+*/
+
+@keyframes glow_pos {
+    from {
+        text-shadow: 0 0 1px #e66101;
+    }
+
+    to {
+        text-shadow: 0 0 5px #e66101;
+    }
+}
+
+@keyframes glow_neg {
+    from {
+        text-shadow: 0 0 1px #5e3c99;
+    }
+
+    to {
+        text-shadow: 0 0 5px #5e3c99;
+    }
+}
+
+#table_confusion_matrix .tp.highlight,
+#table_confusion_matrix .fn.highlight,
+#table_confusion_matrix .p.highlight,
+#table_confusion_matrix .predp.highlight {
+    animation: glow_pos 1s infinite alternate;
+}
+
+#table_confusion_matrix .tn.highlight,
+#table_confusion_matrix .fp.highlight,
+#table_confusion_matrix .n.highlight,
+#table_confusion_matrix .predn.highlight {
+    animation: glow_neg 1s infinite alternate;
 }

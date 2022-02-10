@@ -39,12 +39,34 @@ $(function(){
 			false_positive_rate: function(){return parseInt(this.fp, 10)/this.n()},
 			false_negative_rate: function(){return parseInt(this.fn, 10)/this.p()},
 
+			false_discovery_rate: function(){return parseInt(this.fp, 10)/this.predp()},
+			false_omission_rate:  function(){return parseInt(this.fn, 10)/this.predn()}
+
 		})	
 
 	$('input').change(function(e){
 	    var queryParams = new URLSearchParams(window.location.search);
 	    queryParams.set($(this).attr('name'), $(this).val());
 	    history.replaceState(null, null, "?"+queryParams.toString());
+	})
+
+
+
+
+	var classes_of_interest = ['tp', 'tn', 'fp', 'fn', 'p', 'n', 'predp', 'predn'];
+
+	classes_of_interest.forEach(function(c){
+		$("."+c+" input").addClass(c);
+
+
+		$("."+c).mouseover(function(e){
+			$('#table_confusion_matrix .'+c).addClass('highlight');
+		});
+
+		$("."+c).mouseout(function(e){
+			$('#table_confusion_matrix .'+c).removeClass('highlight');
+		});
+
 	})
 
 })

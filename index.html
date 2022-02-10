@@ -120,7 +120,17 @@
         <td class='synonyms'>False negative rate</td> 
       </tr>
 
+      <tr>
+        <th>False discovery rate</td>
+        <td><span class="fp">{fp}</span> / <span class="predp">{predp | watch tp fp}</span> = </td>
+        <td>{false_discovery_rate | watch tp fp | percent}</td>
+      </tr>
 
+      <tr>
+        <th>False omission rate</td>
+        <td><span class="fn">{fn}</span> / <span class="predn">{predn | watch fn tn}</span> = </td>
+        <td>{false_omission_rate | watch fn tn | percent}</td>
+      </tr>
 
 
     </table>
