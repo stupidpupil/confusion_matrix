@@ -57,6 +57,7 @@
         <th>Actual Prevalence</td>
         <td><span class="p">{p | watch tp fn}</span> / (<span class="p">{p | watch tp fn}</span> + <span class="n">{n | watch fp tn}</span>) = </td>
         <td>{prevalence | watch tp tn fp fn | percent}</td>
+        <td class='synonyms'></td> 
       </tr>
 
       <tr>
@@ -73,11 +74,6 @@
         <td class='synonyms'>True negative rate, selectivity</td> 
       </tr>
 
-      <tr>
-        <th>'Accuracy'</td>
-        <td>(<span class="tp">{tp}</span> + <span class="tn">{tn}</span>) / {total | watch tp tn fp fn} = </td>
-        <td>{accuracy | watch tn fp tp fn | percent}</td>
-      </tr>
 
       <tr>
         <th>Informedness</td>
@@ -104,6 +100,19 @@
         <th><span class="negative_predictive_value">Negative predictive value</span></td>
         <td><span class="tn">{tn}</span> / <span class="predn">{predn | watch tn fn}</span> = </td>
         <td><span class="negative_predictive_value">{negative_predictive_value | watch tn fn | percent}</span></td>
+        <td class='synonyms'></td> 
+      </tr>
+
+
+      <tr>
+        <th><span class="markedness">Markedness</span></td>
+        <td>
+          <span class="positive_predictive_value">{positive_predictive_value | watch tp fp | percent}</span> +
+          <span class="negative_predictive_value">{negative_predictive_value | watch tn fn | percent}</span> -
+          100% =
+        </td>
+        <td><span class="markedness">{markedness | watch tp fp tn fn | percent}</span></td>
+        <td class='synonyms'>delta-p</td> 
       </tr>
 
       <tr>
@@ -136,6 +145,13 @@
         <td><span class="fn">{fn}</span> / <span class="predn">{predn | watch fn tn}</span> = </td>
         <td>{false_omission_rate | watch fn tn | percent}</td>
         <td class='synonyms'>100% - <span class="negative_predictive_value">{negative_predictive_value | watch tn fn | percent}</span></td>
+      </tr>
+
+
+      <tr>
+        <th>'Accuracy'</td>
+        <td>(<span class="tp">{tp}</span> + <span class="tn">{tn}</span>) / {total | watch tp tn fp fn} = </td>
+        <td>{accuracy | watch tn fp tp fn | percent}</td>
       </tr>
 
 

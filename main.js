@@ -30,17 +30,20 @@ $(function(){
 			sensitivity: function(){return parseInt(this.tp, 10) / this.p()},
 			specificity: function(){return parseInt(this.tn, 10) / this.n()},
 
-			accuracy: function(){return( (parseInt(this.tp, 10) + parseInt(this.tn, 10)) / (this.total()) )},
 			informedness: function(){return this.sensitivity() + this.specificity() - 1},
 
 			positive_predictive_value: function(){return parseInt(this.tp, 10) / this.predp()},
 			negative_predictive_value: function(){return parseInt(this.tn, 10) / this.predn()},
 
+			markedness: function(){return this.positive_predictive_value() + this.negative_predictive_value() - 1},
+
 			false_positive_rate: function(){return parseInt(this.fp, 10)/this.n()},
 			false_negative_rate: function(){return parseInt(this.fn, 10)/this.p()},
 
 			false_discovery_rate: function(){return parseInt(this.fp, 10)/this.predp()},
-			false_omission_rate:  function(){return parseInt(this.fn, 10)/this.predn()}
+			false_omission_rate:  function(){return parseInt(this.fn, 10)/this.predn()},
+
+			accuracy: function(){return( (parseInt(this.tp, 10) + parseInt(this.tn, 10)) / (this.total()) )}
 
 		})	
 
