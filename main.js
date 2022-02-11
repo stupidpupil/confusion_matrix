@@ -37,7 +37,7 @@ $(function(){
 			tp_size: function(){return 6*Math.sqrt(parseInt(this.tp, 10)/this.total())},
 			tn_size: function(){return 6*Math.sqrt(parseInt(this.tn, 10)/this.total())},
 			fp_size: function(){return 6*Math.sqrt(parseInt(this.fp, 10)/this.total())},
-			tn_size: function(){return 6*Math.sqrt(parseInt(this.tn, 10)/this.total())},
+			fn_size: function(){return 6*Math.sqrt(parseInt(this.fn, 10)/this.total())},
 
 
 			predp: function(){return parseInt(this.fp, 10) + parseInt(this.tp, 10)},
