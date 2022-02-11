@@ -13,16 +13,44 @@ html{
 	font-size: 1em;
 }
 
-#table_confusion_matrix input{
-	height: 6em;
-	width:  6em;
-	border:  none;
-}
 
 #table_confusion_matrix td{
 	min-width: 2em;
 }
 
+
+#table_confusion_matrix .big_four{
+	height: 6rem;
+	width:  6rem;
+	position: relative;
+}
+
+#table_confusion_matrix .big_four label{
+	position: absolute;
+	bottom: 1.2em;
+	left: 0;
+	font-size: 0.62em;
+	width: 6rem;
+	text-transform: uppercase;
+ 	color: transparent;
+  	text-shadow: 0px 2px 3px rgba(255,255,255,0.2);
+	background-color: rgba(0,0,0,0.5);
+	background-clip: text;
+}
+
+#table_confusion_matrix td input{
+	position: absolute;
+	top: 1em;
+	left: 1.3em;
+	height: 4em;
+	width:  4em;
+	border:  none;
+	background-color: transparent;
+}
+
+#table_confusion_matrix td input:focus{
+	outline: none;
+}
 
 
 .actual_condition_header{
@@ -85,8 +113,8 @@ html{
 }
 
 /* Pred Positives */
-.tp, .tp input,
-.fp, .fp input,
+.tp,
+.fp,
 .predp
 {
 	background-color: #fee0b6;
@@ -94,8 +122,8 @@ html{
 
 
 /* Pred Negatives */
-.tn, .tn input,
-.fn, .fn input,
+.tn,
+.fn,
 .predn
 {
 	background-color: #d8daed;
