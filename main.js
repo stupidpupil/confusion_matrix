@@ -69,18 +69,17 @@ $(function(){
 			accuracy: function(){return( (parseInt(this.tp, 10) + parseInt(this.tn, 10)) / (this.total()) )},
 			f1_score: function(){return (2*this.positive_predictive_value()*this.sensitivity())/(this.positive_predictive_value() + this.sensitivity())},
 
-			show_false_x_rate_complements: true,
-			show_misc_summary_metrics: true
+			show_false_x_rate_complements: false,
+			show_misc_summary_metrics: false,
+			show_scale_blobs: true
 
 		})	
 
-	$('input').change(function(e){
+	$('.table_confusion_matrix input').change(function(e){
 	    var queryParams = new URLSearchParams(window.location.search);
 	    queryParams.set($(this).attr('name'), $(this).val());
 	    history.replaceState(null, null, "?"+queryParams.toString());
 	})
-
-
 
 
 	var classes_of_interest = ['tp', 'tn', 'fp', 'fn', 'p', 'n', 'predp', 'predn'];

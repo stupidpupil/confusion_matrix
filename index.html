@@ -11,200 +11,218 @@
       crossorigin="anonymous"></script>
 
     <script src="main.js"></script>
-    <link rel="stylesheet" href="main.css?220211T0400" />
+    <link rel="stylesheet" href="main.css?220211T0500" />
 
     <title>Interactive Confusion Matrix</title>
   </head>
   <body id="body">
 
-    <table class="table_confusion_matrix">
+    <div>
 
-      <tr>
-        <td colspan="2" />
-        <th scope="col" colspan="2">Predicted Condition</th></tr>
-      
-      <tr>
-        <td colspan="1" />
-        <td>{total | watch tp tn fp fn}</td>
-        <th class="predp" scope="col">Positive</th>
-        <th class="predn" scope="col">Negative</th>
-      </tr>
-      
-      <tr>
-        <th rowspan="2" scope="row" class='actual_condition_header'>Actual Condition</th>
-        <th class="p" scope="row">Positive</th>
-        <td class="tp big_four">
-          <div class="scale_blob" style="bottom: 0;right: 0;" rv-square_size_rem="tp_size | watch tp tn fp fn "></div>
-          <label for="tp">True Positives</label> 
-          <input type="number" name="tp" rv-value="tp" min="0">
-        </td>
-        <td class="fn big_four">
-          <div class="scale_blob" style="bottom: 0; left: 0;" rv-square_size_rem="fn_size | watch tp tn fp fn "></div>
-          <label for="fn">False Negatives</label>
-          <input type="number" name="fn" rv-value="fn" min="0">
-        </td>
-        <td class="p">{p | watch tp fn}</td>
-      </tr>
-      
-      <tr>
-        <!-- th from above -->
-        <th class="n" scope="row">Negative</th>
-        <td class="fp big_four">
-          <div class="scale_blob" style="top: 0; right: 0;" rv-square_size_rem="fp_size | watch tp tn fp fn "></div>
-          <label for="fp">False Positives</label>
-          <input type="number" name="fp" rv-value="fp" min="0">
-        </td>
-        <td class="tn big_four">
-          <div class="scale_blob" style="top: 0; left: 0;" rv-square_size_rem="tn_size | watch tp tn fp fn "></div>
-          <label for="tn">True Negatives</label> 
-          <input type="number" name="tn" rv-value="tn" min="0">
-        </td>
-        <td class="n">{n | watch fp tn}</td>
-      </tr>
+      <table class="table_confusion_matrix">
 
-      <tr>
-        <td colspan="2" />
-        <td class="predp">{predp | watch tp fp}</td>
-        <td class="predn">{predn | watch tn fn}</td>
-      </tr>
+        <tr>
+          <td colspan="2" />
+          <th scope="col" colspan="2">Predicted Condition</th></tr>
+        
+        <tr>
+          <td colspan="1" />
+          <td>{total | watch tp tn fp fn}</td>
+          <th class="predp" scope="col">Positive</th>
+          <th class="predn" scope="col">Negative</th>
+        </tr>
+        
+        <tr>
+          <th rowspan="2" scope="row" class='actual_condition_header'>Actual Condition</th>
+          <th class="p" scope="row">Positive</th>
+          <td class="tp big_four">
+            <div class="scale_blob" style="bottom: 0;right: 0;" rv-show="show_scale_blobs" rv-square_size_rem="tp_size | watch tp tn fp fn "></div>
+            <label for="tp">True Positives</label> 
+            <input type="number" name="tp" rv-value="tp" min="0">
+          </td>
+          <td class="fn big_four">
+            <div class="scale_blob" style="bottom: 0; left: 0;" rv-show="show_scale_blobs" rv-square_size_rem="fn_size | watch tp tn fp fn "></div>
+            <label for="fn">False Negatives</label>
+            <input type="number" name="fn" rv-value="fn" min="0">
+          </td>
+          <td class="p">{p | watch tp fn}</td>
+        </tr>
+        
+        <tr>
+          <!-- th from above -->
+          <th class="n" scope="row">Negative</th>
+          <td class="fp big_four">
+            <div class="scale_blob" style="top: 0; right: 0;" rv-show="show_scale_blobs" rv-square_size_rem="fp_size | watch tp tn fp fn "></div>
+            <label for="fp">False Positives</label>
+            <input type="number" name="fp" rv-value="fp" min="0">
+          </td>
+          <td class="tn big_four">
+            <div class="scale_blob" style="top: 0; left: 0;" rv-show="show_scale_blobs" rv-square_size_rem="tn_size | watch tp tn fp fn "></div>
+            <label for="tn">True Negatives</label> 
+            <input type="number" name="tn" rv-value="tn" min="0">
+          </td>
+          <td class="n">{n | watch fp tn}</td>
+        </tr>
 
-    </table>
+        <tr>
+          <td colspan="2" />
+          <td class="predp">{predp | watch tp fp}</td>
+          <td class="predn">{predn | watch tn fn}</td>
+        </tr>
 
+      </table>
 
-    <table id="statistics">
-      <tr>
-        <th>Prevalence</td>
-        <td><span class="p">{p | watch tp fn}</span> / (<span class="p">{p | watch tp fn}</span> + <span class="n">{n | watch fp tn}</span>) = </td>
-        <td>{prevalence | watch tp tn fp fn | percent}</td>
-        <td class='synonyms'>Balance of classes</td> 
-      </tr>
+      <div id="options">
+        <input type="checkbox" id="show_scale_blobs" name="show_scale_blobs" rv-checked="show_scale_blobs">
+        <label for="show_scale_blobs">Scale visualisation</label> <br/>
 
-      <tr>
-        <th><span class="sensitivity">Sensitivity</span></td>
-        <td><span class="tp">{tp}</span> / <span class="p">{p | watch tp fn}</span> = </td>
-        <td><span class="sensitivity"> {sensitivity | watch tp fn | percent} </span></td>
-        <td class='synonyms'>True positive rate, recall, hit rate, statistical power</td> 
-      </tr>
+        <input type="checkbox" id="show_false_x_rate_complements" name="show_false_x_rate_complements" rv-checked="show_false_x_rate_complements">
+        <label for="show_false_x_rate_complements">'False ... rate' complements</label> <br/>
 
-      <tr>
-        <th><span class="specificity">Specificity</span></td>
-        <td><span class="tn">{tn}</span> / <span class="n">{n | watch tn fp}</span> = </td>
-        <td><span class="specificity">{specificity | watch tn fp | percent}</span></td>
-        <td class='synonyms'>True negative rate, selectivity</td> 
-      </tr>
+        <input type="checkbox" id="show_misc_summary_metrics" name="show_misc_summary_metrics" rv-checked="show_misc_summary_metrics">
+        <label for="show_misc_summary_metrics">Miscellaenous summary statistics</label> <br/>
+      </div>
 
 
-      <tr>
-        <th><span class='informedness'>Informedness</span></td>
-        <td>
-          <span class="sensitivity"> {sensitivity | watch tp fn | percent} </span> +
-          <span class="specificity">{specificity | watch tn fp | percent}</span> -
-          100% =
+    </div>
 
-        </td>
-        <td><span class='informedness'>{informedness | watch tn fp tp fn | percent}</span></td>
-        <td class='synonyms'>Youden's J, bookmaker informedness, Peirce’s I</td> 
+      <div>
 
-      </tr>
+      <table id="statistics">
+        <tr>
+          <th>Prevalence</td>
+          <td><span class="p">{p | watch tp fn}</span> / (<span class="p">{p | watch tp fn}</span> + <span class="n">{n | watch fp tn}</span>) = </td>
+          <td>{prevalence | watch tp tn fp fn | percent}</td>
+          <td class='synonyms'>Balance of classes</td> 
+        </tr>
 
-      <tr>
-        <th><span class="positive_predictive_value">Positive predictive value</span></td>
-        <td><span class="tp">{tp}</span> / <span class="predp">{predp | watch tp fp}</span> = </td>
-        <td><span class="positive_predictive_value">{positive_predictive_value | watch tp fp | percent}</span></td>
-        <td class='synonyms'>Precision</td> 
+        <tr>
+          <th><span class="sensitivity">Sensitivity</span></td>
+          <td><span class="tp">{tp}</span> / <span class="p">{p | watch tp fn}</span> = </td>
+          <td><span class="sensitivity"> {sensitivity | watch tp fn | percent} </span></td>
+          <td class='synonyms'>True positive rate, recall, hit rate, statistical power</td> 
+        </tr>
 
-      </tr>
-
-      <tr>
-        <th><span class="negative_predictive_value">Negative predictive value</span></td>
-        <td><span class="tn">{tn}</span> / <span class="predn">{predn | watch tn fn}</span> = </td>
-        <td><span class="negative_predictive_value">{negative_predictive_value | watch tn fn | percent}</span></td>
-        <td class='synonyms'></td> 
-      </tr>
+        <tr>
+          <th><span class="specificity">Specificity</span></td>
+          <td><span class="tn">{tn}</span> / <span class="n">{n | watch tn fp}</span> = </td>
+          <td><span class="specificity">{specificity | watch tn fp | percent}</span></td>
+          <td class='synonyms'>True negative rate, selectivity</td> 
+        </tr>
 
 
-      <tr>
-        <th><span class="markedness">Markedness</span></td>
-        <td>
-          <span class="positive_predictive_value">{positive_predictive_value | watch tp fp | percent}</span> +
-          <span class="negative_predictive_value">{negative_predictive_value | watch tn fn | percent}</span> -
-          100% =
-        </td>
-        <td><span class="markedness">{markedness | watch tp fp tn fn | percent}</span></td>
-        <td class='synonyms'>Δp ('delta-p')</td> 
-      </tr>
+        <tr>
+          <th><span class='informedness'>Informedness</span></td>
+          <td>
+            <span class="sensitivity"> {sensitivity | watch tp fn | percent} </span> +
+            <span class="specificity">{specificity | watch tn fp | percent}</span> -
+            100% =
+
+          </td>
+          <td><span class='informedness'>{informedness | watch tn fp tp fn | percent}</span></td>
+          <td class='synonyms'>Youden's J, bookmaker informedness, Peirce’s I</td> 
+
+        </tr>
+
+        <tr>
+          <th><span class="positive_predictive_value">Positive predictive value</span></td>
+          <td><span class="tp">{tp}</span> / <span class="predp">{predp | watch tp fp}</span> = </td>
+          <td><span class="positive_predictive_value">{positive_predictive_value | watch tp fp | percent}</span></td>
+          <td class='synonyms'>Precision</td> 
+
+        </tr>
+
+        <tr>
+          <th><span class="negative_predictive_value">Negative predictive value</span></td>
+          <td><span class="tn">{tn}</span> / <span class="predn">{predn | watch tn fn}</span> = </td>
+          <td><span class="negative_predictive_value">{negative_predictive_value | watch tn fn | percent}</span></td>
+          <td class='synonyms'></td> 
+        </tr>
 
 
-      <tr>
-        <th><span class="matthews_cc">Matthews correl. coef.</span></td>
-        <td>
-          √(<span class='informedness'>{informedness | watch tn fp tp fn | percent}</span> × <span class="markedness">{markedness | watch tp fp tn fn | percent}</span>)
-        </td>
-        <td><span class="matthews_cc">{matthews_cc | watch tp fp tn fn | percent}</span></td>
-        <td class='synonyms'>φ ('phi')</td> 
-      </tr>
+        <tr>
+          <th><span class="markedness">Markedness</span></td>
+          <td>
+            <span class="positive_predictive_value">{positive_predictive_value | watch tp fp | percent}</span> +
+            <span class="negative_predictive_value">{negative_predictive_value | watch tn fn | percent}</span> -
+            100% =
+          </td>
+          <td><span class="markedness">{markedness | watch tp fp tn fn | percent}</span></td>
+          <td class='synonyms'>Δp ('delta-p')</td> 
+        </tr>
 
 
-      <tr rv-show="show_false_x_rate_complements">
-        <th colspan="4" class="section_header">'False ... rate' complements</th>
-      </tr>
-
-      <tr rv-show="show_false_x_rate_complements">
-        <th>False positive rate</td>
-        <td>
-          <span class="fp">{fp}</span> / <span class="n">{n | watch tn fp}</span> = 
-        </td>
-        <td>{false_positive_rate | watch tn fp | percent}</td>
-        <td class='synonyms'>Fall-out, 100% - <span class="specificity">{specificity | watch tn fp | percent}</span></td> 
-      </tr>
-
-      <tr rv-show="show_false_x_rate_complements">
-        <th>False negative rate</td>
-        <td>
-          <span class="fn">{fn}</span> / <span class="p">{p | watch tp fn}</span> = 
-        </td>
-        <td>{false_negative_rate | watch tp fn | percent}</td>
-        <td class='synonyms'>Miss rate, 100% - <span class="sensitivity"> {sensitivity | watch tp fn | percent} </span></td> 
-      </tr>
-
-      <tr rv-show="show_false_x_rate_complements">
-        <th>False discovery rate</td>
-        <td><span class="fp">{fp}</span> / <span class="predp">{predp | watch tp fp}</span> = </td>
-        <td>{false_discovery_rate | watch tp fp | percent}</td>
-        <td class='synonyms'>100% - <span class="positive_predictive_value">{positive_predictive_value | watch tp fp | percent}</span></td>
-      </tr>
-
-      <tr rv-show="show_false_x_rate_complements">
-        <th>False omission rate</td>
-        <td><span class="fn">{fn}</span> / <span class="predn">{predn | watch fn tn}</span> = </td>
-        <td>{false_omission_rate | watch fn tn | percent}</td>
-        <td class='synonyms'>100% - <span class="negative_predictive_value">{negative_predictive_value | watch tn fn | percent}</span></td>
-      </tr>
+        <tr>
+          <th><span class="matthews_cc">Matthews correl. coef.</span></td>
+          <td>
+            √(<span class='informedness'>{informedness | watch tn fp tp fn | percent}</span> × <span class="markedness">{markedness | watch tp fp tn fn | percent}</span>)
+          </td>
+          <td><span class="matthews_cc">{matthews_cc | watch tp fp tn fn | percent}</span></td>
+          <td class='synonyms'>φ ('phi')</td> 
+        </tr>
 
 
-      <tr rv-show="show_misc_summary_metrics">
-        <th colspan="4" class="section_header">Miscellaneous summary metrics</th>
-      </tr>
+        <tr rv-show="show_false_x_rate_complements">
+          <th colspan="4" class="section_header">'False ... rate' complements</th>
+        </tr>
 
-      <tr rv-show="show_misc_summary_metrics">
-        <th>'Accuracy'</td>
-        <td>(<span class="tp">{tp}</span> + <span class="tn">{tn}</span>) / {total | watch tp tn fp fn} = </td>
-        <td>{accuracy | watch tn fp tp fn | percent}</td>
-        <td class='synonyms'>Fraction correct</td> 
-      </tr>
+        <tr rv-show="show_false_x_rate_complements">
+          <th>False positive rate</td>
+          <td>
+            <span class="fp">{fp}</span> / <span class="n">{n | watch tn fp}</span> = 
+          </td>
+          <td>{false_positive_rate | watch tn fp | percent}</td>
+          <td class='synonyms'>Fall-out, 100% - <span class="specificity">{specificity | watch tn fp | percent}</span></td> 
+        </tr>
 
-      <tr rv-show="show_misc_summary_metrics">
-        <th>F<sub>1</sub> score</td>
-        <td class="smaller_formula">
-          ( 2 × <span class="positive_predictive_value">{positive_predictive_value | watch tp fp | percent_no_small_digits}</span> × <span class="sensitivity"> {sensitivity | watch tp fn | percent_no_small_digits} </span>) / ( <span class="positive_predictive_value">{positive_predictive_value | watch tp fp | percent_no_small_digits}</span> + <span class="sensitivity"> {sensitivity | watch tp fn | percent_no_small_digits} </span>)
-         = 
-        </td>
-        <td>{f1_score | watch tn fp tp fn | percent}</td>
-        <td class='synonyms'>Sørensen–Dice coefficient</td> 
-      </tr>
+        <tr rv-show="show_false_x_rate_complements">
+          <th>False negative rate</td>
+          <td>
+            <span class="fn">{fn}</span> / <span class="p">{p | watch tp fn}</span> = 
+          </td>
+          <td>{false_negative_rate | watch tp fn | percent}</td>
+          <td class='synonyms'>Miss rate, 100% - <span class="sensitivity"> {sensitivity | watch tp fn | percent} </span></td> 
+        </tr>
+
+        <tr rv-show="show_false_x_rate_complements">
+          <th>False discovery rate</td>
+          <td><span class="fp">{fp}</span> / <span class="predp">{predp | watch tp fp}</span> = </td>
+          <td>{false_discovery_rate | watch tp fp | percent}</td>
+          <td class='synonyms'>100% - <span class="positive_predictive_value">{positive_predictive_value | watch tp fp | percent}</span></td>
+        </tr>
+
+        <tr rv-show="show_false_x_rate_complements">
+          <th>False omission rate</td>
+          <td><span class="fn">{fn}</span> / <span class="predn">{predn | watch fn tn}</span> = </td>
+          <td>{false_omission_rate | watch fn tn | percent}</td>
+          <td class='synonyms'>100% - <span class="negative_predictive_value">{negative_predictive_value | watch tn fn | percent}</span></td>
+        </tr>
 
 
-    </table>
+        <tr rv-show="show_misc_summary_metrics">
+          <th colspan="4" class="section_header">Miscellaneous summary metrics</th>
+        </tr>
+
+        <tr rv-show="show_misc_summary_metrics">
+          <th>'Accuracy'</td>
+          <td>(<span class="tp">{tp}</span> + <span class="tn">{tn}</span>) / {total | watch tp tn fp fn} = </td>
+          <td>{accuracy | watch tn fp tp fn | percent}</td>
+          <td class='synonyms'>Fraction correct</td> 
+        </tr>
+
+        <tr rv-show="show_misc_summary_metrics">
+          <th>F<sub>1</sub> score</td>
+          <td class="smaller_formula">
+            ( 2 × <span class="positive_predictive_value">{positive_predictive_value | watch tp fp | percent_no_small_digits}</span> × <span class="sensitivity"> {sensitivity | watch tp fn | percent_no_small_digits} </span>) / ( <span class="positive_predictive_value">{positive_predictive_value | watch tp fp | percent_no_small_digits}</span> + <span class="sensitivity"> {sensitivity | watch tp fn | percent_no_small_digits} </span>)
+           = 
+          </td>
+          <td>{f1_score | watch tn fp tp fn | percent}</td>
+          <td class='synonyms'>Sørensen–Dice coefficient</td> 
+        </tr>
+
+
+      </table>
+    </div>
 
     
   </body>

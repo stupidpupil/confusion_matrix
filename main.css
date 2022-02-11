@@ -2,9 +2,13 @@ html{
 	font-family: 'Segoe UI';
 }
 
-.table_confusion_matrix,
-#statistics{
+body > div{
 	float: left;
+}
+
+#options{
+	margin-top: 2em;
+	margin-left: 2em;
 }
 
 .table_confusion_matrix,
