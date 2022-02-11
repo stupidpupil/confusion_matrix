@@ -36,6 +36,8 @@ html{
   	text-shadow: 0px 2px 3px rgba(255,255,255,0.2);
 	background-color: rgba(0,0,0,0.5);
 	background-clip: text;
+	-webkit-background-clip: text;
+
 }
 
 #table_confusion_matrix td input{
@@ -54,8 +56,9 @@ html{
 
 
 .actual_condition_header{
-    transform-origin:50% 50%;
-    transform: rotate(-90deg);
+    writing-mode: vertical-rl;
+    transform-origin: 40% 50%;
+    transform: rotate(180deg);
 }
 
 
