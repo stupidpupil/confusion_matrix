@@ -2,30 +2,30 @@ html{
 	font-family: 'Segoe UI';
 }
 
-#table_confusion_matrix,
+.table_confusion_matrix,
 #statistics{
 	float: left;
 }
 
-#table_confusion_matrix,
-#table_confusion_matrix input{
+.table_confusion_matrix,
+.table_confusion_matrix input{
 	text-align: center;
 	font-size: 1em;
 }
 
 
-#table_confusion_matrix td{
+.table_confusion_matrix td{
 	min-width: 2em;
 }
 
 
-#table_confusion_matrix .big_four{
+.table_confusion_matrix .big_four{
 	height: 6rem;
 	width:  6rem;
 	position: relative;
 }
 
-#table_confusion_matrix .big_four label{
+.table_confusion_matrix .big_four label{
 	position: absolute;
 	bottom: 1.2em;
 	left: 0;
@@ -40,7 +40,13 @@ html{
 
 }
 
-#table_confusion_matrix td input{
+.table_confusion_matrix .scale_blob{
+	position: absolute;
+	background-color: black;
+	opacity: 0.1;
+}
+
+.table_confusion_matrix td input{
 	position: absolute;
 	top: 1em;
 	left: 1.3em;
@@ -50,7 +56,7 @@ html{
 	background-color: transparent;
 }
 
-#table_confusion_matrix td input:focus{
+.table_confusion_matrix td input:focus{
 	outline: none;
 }
 
@@ -209,16 +215,16 @@ html{
     }
 }
 
-#table_confusion_matrix .tp.highlight,
-#table_confusion_matrix .fn.highlight,
-#table_confusion_matrix .p.highlight,
-#table_confusion_matrix .predp.highlight {
+.table_confusion_matrix .tp.highlight,
+.table_confusion_matrix .fn.highlight,
+.table_confusion_matrix .p.highlight,
+.table_confusion_matrix .predp.highlight {
     animation: glow_pos 1s infinite alternate;
 }
 
-#table_confusion_matrix .tn.highlight,
-#table_confusion_matrix .fp.highlight,
-#table_confusion_matrix .n.highlight,
-#table_confusion_matrix .predn.highlight {
+.table_confusion_matrix .tn.highlight,
+.table_confusion_matrix .fp.highlight,
+.table_confusion_matrix .n.highlight,
+.table_confusion_matrix .predn.highlight {
     animation: glow_neg 1s infinite alternate;
 }

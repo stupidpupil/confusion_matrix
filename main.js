@@ -4,14 +4,22 @@ $(function(){
   		get: (searchParams, prop) => searchParams.get(prop),
 	});
 
-
-
 	tinybind.formatters.percent = function(value){
 	  return "" + (value * 100).toFixed(1) + "%";
 	}
 
 	tinybind.formatters.percent_no_small_digits = function(value){
 	  return "" + (value * 100).toFixed(0) + "%";
+	}
+
+	tinybind.binders.square_size_rem = function(el, val){
+
+		if(isNaN(val)){
+			val = 0;
+		}
+
+		el.style.height = val + 'rem';
+		el.style.width = val + 'rem';
 	}
 
 	tinybind.bind(document.getElementById('body'), 
@@ -25,6 +33,12 @@ $(function(){
 			n:     function(){return parseInt(this.fp, 10) + parseInt(this.tn, 10)},
 
 			total: function(){return this.p() + this.n()},
+
+			tp_size: function(){return 6*Math.sqrt(parseInt(this.tp, 10)/this.total())},
+			tn_size: function(){return 6*Math.sqrt(parseInt(this.tn, 10)/this.total())},
+			fp_size: function(){return 6*Math.sqrt(parseInt(this.fp, 10)/this.total())},
+			tn_size: function(){return 6*Math.sqrt(parseInt(this.tn, 10)/this.total())},
+
 
 			predp: function(){return parseInt(this.fp, 10) + parseInt(this.tp, 10)},
 			predn: function(){return parseInt(this.fn, 10) + parseInt(this.tn, 10)},
@@ -76,11 +90,11 @@ $(function(){
 
 
 		$("."+c).mouseover(function(e){
-			$('#table_confusion_matrix .'+c).addClass('highlight');
+			$('.table_confusion_matrix .'+c).addClass('highlight');
 		});
 
 		$("."+c).mouseout(function(e){
-			$('#table_confusion_matrix .'+c).removeClass('highlight');
+			$('.table_confusion_matrix .'+c).removeClass('highlight');
 		});
 
 	})
