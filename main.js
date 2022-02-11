@@ -45,7 +45,10 @@ $(function(){
 			false_discovery_rate: function(){return parseInt(this.fp, 10)/this.predp()},
 			false_omission_rate:  function(){return parseInt(this.fn, 10)/this.predn()},
 
-			accuracy: function(){return( (parseInt(this.tp, 10) + parseInt(this.tn, 10)) / (this.total()) )}
+			accuracy: function(){return( (parseInt(this.tp, 10) + parseInt(this.tn, 10)) / (this.total()) )},
+
+			show_false_x_rate_complements: true,
+			show_misc_summary_metrics: true
 
 		})	
 

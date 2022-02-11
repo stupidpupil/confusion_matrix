@@ -11,7 +11,7 @@
       crossorigin="anonymous"></script>
 
     <script src="main.js"></script>
-    <link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" href="main.css?220211T0110" />
 
     <title>Interactive Confusion Matrix</title>
   </head>
@@ -128,7 +128,11 @@
       </tr>
 
 
-      <tr>
+      <tr rv-show="show_false_x_rate_complements">
+        <th colspan="4" class="section_header">'False ... rate' complements</th>
+      </tr>
+
+      <tr rv-show="show_false_x_rate_complements">
         <th>False positive rate</td>
         <td>
           <span class="fp">{fp}</span> / <span class="n">{n | watch tn fp}</span> = 
@@ -137,7 +141,7 @@
         <td class='synonyms'>Fall-out, 100% - <span class="specificity">{specificity | watch tn fp | percent}</span></td> 
       </tr>
 
-      <tr>
+      <tr rv-show="show_false_x_rate_complements">
         <th>False negative rate</td>
         <td>
           <span class="fn">{fn}</span> / <span class="p">{p | watch tp fn}</span> = 
@@ -146,14 +150,14 @@
         <td class='synonyms'>Miss rate, 100% - <span class="sensitivity"> {sensitivity | watch tp fn | percent} </span></td> 
       </tr>
 
-      <tr>
+      <tr rv-show="show_false_x_rate_complements">
         <th>False discovery rate</td>
         <td><span class="fp">{fp}</span> / <span class="predp">{predp | watch tp fp}</span> = </td>
         <td>{false_discovery_rate | watch tp fp | percent}</td>
         <td class='synonyms'>100% - <span class="positive_predictive_value">{positive_predictive_value | watch tp fp | percent}</span></td>
       </tr>
 
-      <tr>
+      <tr rv-show="show_false_x_rate_complements">
         <th>False omission rate</td>
         <td><span class="fn">{fn}</span> / <span class="predn">{predn | watch fn tn}</span> = </td>
         <td>{false_omission_rate | watch fn tn | percent}</td>
@@ -161,7 +165,11 @@
       </tr>
 
 
-      <tr>
+      <tr rv-show="show_misc_summary_metrics">
+        <th colspan="4" class="section_header">Miscellaneous summary metrics</th>
+      </tr>
+
+      <tr rv-show="show_misc_summary_metrics">
         <th>'Accuracy'</td>
         <td>(<span class="tp">{tp}</span> + <span class="tn">{tn}</span>) / {total | watch tp tn fp fn} = </td>
         <td>{accuracy | watch tn fp tp fn | percent}</td>
