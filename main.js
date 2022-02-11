@@ -10,6 +10,10 @@ $(function(){
 	  return "" + (value * 100).toFixed(1) + "%";
 	}
 
+	tinybind.formatters.percent_no_small_digits = function(value){
+	  return "" + (value * 100).toFixed(0) + "%";
+	}
+
 	tinybind.bind(document.getElementById('body'), 
 		{
 			tp: params.tp || 20, 
@@ -49,6 +53,7 @@ $(function(){
 			false_omission_rate:  function(){return parseInt(this.fn, 10)/this.predn()},
 
 			accuracy: function(){return( (parseInt(this.tp, 10) + parseInt(this.tn, 10)) / (this.total()) )},
+			f1_score: function(){return (2*this.positive_predictive_value()*this.sensitivity())/(this.positive_predictive_value() + this.sensitivity())},
 
 			show_false_x_rate_complements: true,
 			show_misc_summary_metrics: true

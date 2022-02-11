@@ -176,6 +176,16 @@
         <td class='synonyms'>Fraction correct</td> 
       </tr>
 
+      <tr rv-show="show_misc_summary_metrics">
+        <th>F<sub>1</sub> score</td>
+        <td class="smaller_formula">
+          ( 2 × <span class="positive_predictive_value">{positive_predictive_value | watch tp fp | percent_no_small_digits}</span> × <span class="sensitivity"> {sensitivity | watch tp fn | percent_no_small_digits} </span>) / ( <span class="positive_predictive_value">{positive_predictive_value | watch tp fp | percent_no_small_digits}</span> + <span class="sensitivity"> {sensitivity | watch tp fn | percent_no_small_digits} </span>)
+         = 
+        </td>
+        <td>{f1_score | watch tn fp tp fn | percent}</td>
+        <td class='synonyms'>Sørensen–Dice coefficient</td> 
+      </tr>
+
 
     </table>
 
