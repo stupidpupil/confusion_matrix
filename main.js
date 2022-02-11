@@ -37,6 +37,8 @@ $(function(){
 
 			markedness: function(){return this.positive_predictive_value() + this.negative_predictive_value() - 1},
 
+			matthews_cc: function(){return Math.sqrt(this.markedness() * this.informedness())},
+
 			false_positive_rate: function(){return parseInt(this.fp, 10)/this.n()},
 			false_negative_rate: function(){return parseInt(this.fn, 10)/this.p()},
 

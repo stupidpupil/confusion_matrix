@@ -117,8 +117,13 @@ html{
 	border: 1px solid #5e3c99;
 }
 
+.informedness{
+	border: 1px solid #333;
+}
+
 .positive_predictive_value,
-.negative_predictive_value{
+.negative_predictive_value,
+.markedness{
 	font-style: italic;
 }
 
@@ -130,6 +135,11 @@ html{
 .negative_predictive_value{
 	background-color: #d8daed;
 	border: 1px solid #5e3c99;
+}
+
+.markedness{
+	background-color: #ddd;
+	border: 1px solid #333;
 }
 
 /*

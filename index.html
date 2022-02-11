@@ -1,6 +1,8 @@
 <!doctype html>
 <html lang=en>
   <head>
+    
+    <meta charset="utf-8"> 
     <script src="tinybind.js"></script>
 
     <!-- jQuery -->
@@ -76,14 +78,14 @@
 
 
       <tr>
-        <th>Informedness</td>
+        <th><span class='informedness'>Informedness</span></td>
         <td>
           <span class="sensitivity"> {sensitivity | watch tp fn | percent} </span> +
           <span class="specificity">{specificity | watch tn fp | percent}</span> -
           100% =
 
         </td>
-        <td>{informedness | watch tn fp tp fn | percent}</td>
+        <td><span class='informedness'>{informedness | watch tn fp tp fn | percent}</span></td>
         <td class='synonyms'>Youden's J</td> 
 
       </tr>
@@ -112,8 +114,19 @@
           100% =
         </td>
         <td><span class="markedness">{markedness | watch tp fp tn fn | percent}</span></td>
-        <td class='synonyms'>delta-p</td> 
+        <td class='synonyms'>Δp ('delta-p')</td> 
       </tr>
+
+
+      <tr>
+        <th><span class="matthews_cc">Matthews correl. coef.</span></td>
+        <td>
+          √(<span class='informedness'>{informedness | watch tn fp tp fn | percent}</span> × <span class="markedness">{markedness | watch tp fp tn fn | percent}</span>)
+        </td>
+        <td><span class="matthews_cc">{matthews_cc | watch tp fp tn fn | percent}</span></td>
+        <td class='synonyms'>φ ('phi')</td> 
+      </tr>
+
 
       <tr>
         <th>False positive rate</td>
