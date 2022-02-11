@@ -56,10 +56,10 @@
 
     <table id="statistics">
       <tr>
-        <th>Actual Prevalence</td>
+        <th>Prevalence</td>
         <td><span class="p">{p | watch tp fn}</span> / (<span class="p">{p | watch tp fn}</span> + <span class="n">{n | watch fp tn}</span>) = </td>
         <td>{prevalence | watch tp tn fp fn | percent}</td>
-        <td class='synonyms'></td> 
+        <td class='synonyms'>Balance of classes</td> 
       </tr>
 
       <tr>
