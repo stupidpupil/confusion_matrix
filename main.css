@@ -46,6 +46,16 @@ html{
 	opacity: 0.1;
 }
 
+.table_confusion_matrix .tp .scale_blob{
+	background-color: #e66101;
+	opacity: 0.17;
+}
+
+.table_confusion_matrix .tn .scale_blob{
+	background-color: #5e3c99;
+	opacity: 0.17;
+}
+
 .table_confusion_matrix td input{
 	position: absolute;
 	top: 1em;
