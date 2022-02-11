@@ -37,7 +37,10 @@ $(function(){
 
 			markedness: function(){return this.positive_predictive_value() + this.negative_predictive_value() - 1},
 
-			matthews_cc: function(){return Math.sqrt(this.markedness() * this.informedness())},
+
+			/* A bit of a hack */
+			matthews_cc_sign: function(){return (this.markedness() < 0 | this.informedness() < 0) ? -1 : 1},
+			matthews_cc: function(){return this.matthews_cc_sign() * Math.sqrt(this.markedness() * this.informedness())},
 
 			false_positive_rate: function(){return parseInt(this.fp, 10)/this.n()},
 			false_negative_rate: function(){return parseInt(this.fn, 10)/this.p()},
