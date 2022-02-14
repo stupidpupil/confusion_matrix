@@ -4,6 +4,18 @@ $(function(){
   		get: (searchParams, prop) => searchParams.get(prop),
 	});
 
+
+	tinybind.formatters.integer = {
+		read: function(value) {
+			return parseInt(value, 10);
+		},
+
+		publish: function(value){
+			return parseInt(value, 10);
+		}
+
+	}
+
 	tinybind.formatters.percent = function(value){
 	  return "" + (value * 100).toFixed(1) + "%";
 	}
@@ -23,34 +35,34 @@ $(function(){
 	}
 
 	confusion_matrix_model = {
-		tp: params.tp || 20, 
-		tn: params.tn || 1820, 
-		fp: params.fp || 180, 
-		fn: params.fn || 10,
+		tp: parseInt(params.tp, 10) || 20, 
+		tn: parseInt(params.tn, 10) || 1820, 
+		fp: parseInt(params.fp, 10) || 180, 
+		fn: parseInt(params.fn, 10) || 10,
 
-		p:     function(){return parseInt(this.tp, 10) + parseInt(this.fn, 10)},
-		n:     function(){return parseInt(this.fp, 10) + parseInt(this.tn, 10)},
+		p:     function(){return this.tp + this.fn },
+		n:     function(){return this.fp + this.tn },
 
 		total: function(){return this.p() + this.n()},
 
-		tp_size: function(){return 6*Math.sqrt(parseInt(this.tp, 10)/this.total())},
-		tn_size: function(){return 6*Math.sqrt(parseInt(this.tn, 10)/this.total())},
-		fp_size: function(){return 6*Math.sqrt(parseInt(this.fp, 10)/this.total())},
-		fn_size: function(){return 6*Math.sqrt(parseInt(this.fn, 10)/this.total())},
+		tp_size: function(){return 6*Math.sqrt(this.tp/this.total())},
+		tn_size: function(){return 6*Math.sqrt(this.tn/this.total())},
+		fp_size: function(){return 6*Math.sqrt(this.fp/this.total())},
+		fn_size: function(){return 6*Math.sqrt(this.fn/this.total())},
 
 
-		predp: function(){return parseInt(this.fp, 10) + parseInt(this.tp, 10)},
-		predn: function(){return parseInt(this.fn, 10) + parseInt(this.tn, 10)},
+		predp: function(){return this.fp + this.tp},
+		predn: function(){return this.fn + this.tn},
 
 		prevalence:  function(){return this.p() / (this.total() )},
 		
-		sensitivity: function(){return parseInt(this.tp, 10) / this.p()},
-		specificity: function(){return parseInt(this.tn, 10) / this.n()},
+		sensitivity: function(){return this.tp / this.p()},
+		specificity: function(){return this.tn / this.n()},
 
 		informedness: function(){return this.sensitivity() + this.specificity() - 1},
 
-		positive_predictive_value: function(){return parseInt(this.tp, 10) / this.predp()},
-		negative_predictive_value: function(){return parseInt(this.tn, 10) / this.predn()},
+		positive_predictive_value: function(){return this.tp / this.predp()},
+		negative_predictive_value: function(){return this.tn / this.predn()},
 
 		markedness: function(){return this.positive_predictive_value() + this.negative_predictive_value() - 1},
 
@@ -59,13 +71,13 @@ $(function(){
 		matthews_cc_sign: function(){return (this.markedness() < 0 | this.informedness() < 0) ? -1 : 1},
 		matthews_cc: function(){return this.matthews_cc_sign() * Math.sqrt(this.markedness() * this.informedness())},
 
-		false_positive_rate: function(){return parseInt(this.fp, 10)/this.n()},
-		false_negative_rate: function(){return parseInt(this.fn, 10)/this.p()},
+		false_positive_rate: function(){return this.fp/this.n()},
+		false_negative_rate: function(){return this.fn/this.p()},
 
-		false_discovery_rate: function(){return parseInt(this.fp, 10)/this.predp()},
-		false_omission_rate:  function(){return parseInt(this.fn, 10)/this.predn()},
+		false_discovery_rate: function(){return this.fp/this.predp()},
+		false_omission_rate:  function(){return this.fn/this.predn()},
 
-		accuracy: function(){return( (parseInt(this.tp, 10) + parseInt(this.tn, 10)) / (this.total()) )},
+		accuracy: function(){return( (this.tp + this.tn) / (this.total()) )},
 		f1_score: function(){return (2*this.positive_predictive_value()*this.sensitivity())/(this.positive_predictive_value() + this.sensitivity())},
 
 		show_false_x_rate_complements: false,
@@ -103,11 +115,11 @@ $(function(){
 			target_prev = 0.9999;
 		}
 
-		var tp = parseInt(confusion_matrix_model.tp, 10);
-		var fn = parseInt(confusion_matrix_model.fn, 10);
+		var tp = confusion_matrix_model.tp;
+		var fn = confusion_matrix_model.fn;
 
-		var tn = parseInt(confusion_matrix_model.tn, 10);
-		var fp = parseInt(confusion_matrix_model.fp, 10);
+		var tn = confusion_matrix_model.tn;
+		var fp = confusion_matrix_model.fp;
 		var neg = tn + fp;
 
 
