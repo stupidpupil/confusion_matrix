@@ -100,14 +100,14 @@
           <th><span class="sensitivity">Sensitivity</span></td>
           <td><span class="tp">{tp}</span> / <span class="p">{p | watch tp fn}</span> = </td>
           <td><span class="sensitivity"> {sensitivity | watch tp fn | percent} </span></td>
-          <td class='synonyms'>True positive rate, recall, hit rate, statistical power, confidence level</td> 
+          <td class='synonyms'>True positive rate, recall, hit rate, statistical power</td> 
         </tr>
 
         <tr>
           <th><span class="specificity">Specificity</span></td>
           <td><span class="tn">{tn}</span> / <span class="n">{n | watch tn fp}</span> = </td>
           <td><span class="specificity">{specificity | watch tn fp | percent}</span></td>
-          <td class='synonyms'>True negative rate, selectivity</td> 
+          <td class='synonyms'>True negative rate, selectivity, confidence level</td> 
         </tr>
 
 
