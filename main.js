@@ -35,7 +35,7 @@ $(function(){
 	}
 
 	var parseIntWithDefault = function(input, base, defaultInt){
-		var parsed = parseInt(params.tp, base);
+		var parsed = parseInt(input, base);
 
 		if(isNaN(parsed)){
 			return(defaultInt);
