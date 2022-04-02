@@ -34,11 +34,21 @@ $(function(){
 		el.style.width = val + 'rem';
 	}
 
+	var parseIntWithDefault = function(input, base, defaultInt){
+		var parsed = parseInt(params.tp, base);
+
+		if(isNaN(parsed)){
+			return(defaultInt);
+		}
+
+		return(parsed;)
+	}
+
 	confusion_matrix_model = {
-		tp: parseInt(params.tp, 10) || 20, 
-		tn: parseInt(params.tn, 10) || 1820, 
-		fp: parseInt(params.fp, 10) || 180, 
-		fn: parseInt(params.fn, 10) || 10,
+		tp: parseIntWithDefault(params.tp, 10, 20),
+		tn: parseIntWithDefault(params.tn, 10, 1820),
+		fp: parseIntWithDefault(params.fp, 10, 180),
+		fn: parseIntWithDefault(params.fn, 10, 10),
 
 		p:     function(){return this.tp + this.fn },
 		n:     function(){return this.fp + this.tn },
