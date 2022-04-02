@@ -41,7 +41,7 @@ $(function(){
 			return(defaultInt);
 		}
 
-		return(parsed;)
+		return(parsed);
 	}
 
 	confusion_matrix_model = {
